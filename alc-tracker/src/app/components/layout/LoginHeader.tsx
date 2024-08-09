@@ -7,6 +7,9 @@ const LoginHeader = () => {
                     SipSmart
                 </div>
                 {/* NavBar */}
+                <ul>
+                    <li>Log In</li>
+                </ul>
             </div>
         </header>
     )
