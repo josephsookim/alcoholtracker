@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={montserrat.className}>
-        <div className="home-bg-gradient">
+        <div className="home-bg-gradient min-h-screen">
           {/* Header w/ Login Button */}
           <Header/>
           
