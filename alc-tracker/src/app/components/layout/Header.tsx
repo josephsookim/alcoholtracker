@@ -1,7 +1,7 @@
 const Header = () => {
     return (
         <header>
-            <div className="container mx-auto flex items-center p-4 text-sm">
+            <div className="container mx-auto flex items-center p-6 text-sm">
                 {/* Website Name */}
                 <div className="flex-grow text-white px-4">
                     SipSmart                                                                                                            
