@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.home-bg-gradient {
+    /* Background Gradient */
+    background-image: url('/bg-gradient.svg');
+    background-size: cover; /* Ensure the SVG covers the entire element */
+    background-position: center; /* Center the background */
+    background-repeat: no-repeat; /* Prevent the SVG from repeating */
+}
+
+/* Fonts */
+
+/* Miscellaneous */
+
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
+}
+  
