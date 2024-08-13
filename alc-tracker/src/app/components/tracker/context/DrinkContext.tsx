@@ -1,9 +1,17 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
+// Define the shape of a Drink object
+export interface Drink {
+  alcoholName: string;
+  alcoholType: string;
+  timestamp: number;
+  servingAmount: number;
+}
+
 // Define the shape of your context data
 interface DrinkContextType {
-  drinks: number[];
-  addDrink: () => void;
+  drinks: Drink[];
+  addDrink: (drink: Drink) => void;
 }
 
 // Create the context
@@ -11,11 +19,10 @@ const DrinkContext = createContext<DrinkContextType | undefined>(undefined);
 
 // Create a provider component
 export const DrinkProvider = ({ children }: { children: ReactNode }) => {
-  const [drinks, setDrinks] = useState<number[]>([]);
+  const [drinks, setDrinks] = useState<Drink[]>([]);
 
-  const addDrink = () => {
-    const currentTime = new Date().getTime();
-    setDrinks([...drinks, currentTime]);
+  const addDrink = (drink: Drink) => {
+    setDrinks([...drinks, drink]);
   };
 
   return (
