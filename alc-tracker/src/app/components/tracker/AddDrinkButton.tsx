@@ -27,20 +27,22 @@ const AddDrinkForm = () => {
 
   return (
     <div>
-      <h2>Add Drink</h2>
       <input
+        className="text-black"
         type="text"
         value={alcoholName}
         onChange={(e) => setAlcoholName(e.target.value)}
         placeholder="Alcohol Name"
       />
       <input
+        className="text-black"
         type="text"
         value={alcoholType}
         onChange={(e) => setAlcoholType(e.target.value)}
         placeholder="Alcohol Type"
       />
       <input
+        className="text-black"
         type="number"
         value={servingAmount}
         onChange={(e) => setServingAmount(parseFloat(e.target.value))}
