@@ -46,7 +46,7 @@ const AddDrinkForm = () => {
         type="number"
         value={servingAmount}
         onChange={(e) => setServingAmount(parseFloat(e.target.value))}
-        placeholder="Serving Size (oz)"
+        placeholder="Standard Servings"
       />
       <button onClick={handleSubmit}>Add Drink</button>
     </div>
