@@ -3,14 +3,17 @@
 import DrinkList from "@/app/components/tracker/DrinkList";
 import AddDrinkButton from "@/app/components/tracker/AddDrinkButton";
 import { DrinkProvider } from "@/app/components/tracker/context/DrinkContext"
+import { UserProvider } from "@/app/components/tracker/context/UserContext"
 
-export default function Home() {
+export default function DrinkTracker() {
     return (
       <div>
-        <DrinkProvider>
-            <DrinkList/>
-            <AddDrinkButton/>
-        </DrinkProvider>
+        <UserProvider>
+          <DrinkProvider>
+              <DrinkList/>
+              <AddDrinkButton/>
+          </DrinkProvider>
+        </UserProvider>
       </div>
     );
   }
