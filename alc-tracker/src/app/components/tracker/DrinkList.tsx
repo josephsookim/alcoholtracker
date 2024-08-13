@@ -6,7 +6,6 @@ const DrinkList = () => {
 
   return (
     <div>
-      <h2>Drink List</h2>
       <ul>
         {drinks.map((drink, index) => (
           <li key={index}>
