@@ -5,9 +5,11 @@ const UserStatus = () => {
   const { userStatus } = useUserStatus();
 
   return (
-    <div>
-      <div>
+    <div className="flex flex-wrap justify-start items-center">
+      <div className="w-full sm:w-auto mr-10">
         <h3>Current BAC: {userStatus.currentBAC.toFixed(3)}</h3>
+      </div>
+      <div className="w-full sm:w-auto">
         <h3>Estimated Sober Time: {new Date(userStatus.soberTimestamp).toLocaleTimeString()}</h3>
       </div>
     </div>
