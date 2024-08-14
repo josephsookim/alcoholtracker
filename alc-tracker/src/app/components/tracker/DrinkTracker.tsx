@@ -5,6 +5,7 @@ import UserStatus from "@/app/components/tracker/UserStatus";
 import AddDrinkButton from "@/app/components/tracker/AddDrinkButton"; 
 import { DrinkProvider } from "@/app/components/tracker/context/DrinkContext";
 import { UserProvider } from "@/app/components/tracker/context/UserContext";
+import React from 'react';
 
 export default function DrinkTracker() {
   return (
@@ -18,29 +19,29 @@ export default function DrinkTracker() {
       }}
     >
       <UserProvider>
-      <DrinkProvider>
-        {/* Flex container with 70% and 30% split */}
-        <div className="flex">
-          <div className="flex-[7] border-2 border-white p-6 rounded-lg min-h-[50vh]">
-            <DrinkList />
+        <DrinkProvider>
+          {/* Flex container with 70% and 30% split */}
+          <div className="flex">
+            <div className="flex-[7] border-2 border-white p-6 rounded-lg min-h-[50vh]">
+              <DrinkList />
+            </div>
+
+            <div className="flex-[3] border-2 border-white p-6 rounded-lg ml-4 min-h-[50vh]">
+            </div>
           </div>
 
-          <div className="flex-[3] border-2 border-white p-6 rounded-lg ml-4 min-h-[50vh]">
-            test
-          </div>
-        </div>
+          {/* Separate row for the providers */}
+          <div className="flex">
+            <div className="flex-[7] p-2 rounded-lg">
+              <UserStatus />
+            </div>
 
-        {/* Separate row for the providers */}
-        <div className="flex">
-          <div className="flex-[7] p-2 rounded-lg">
-            <UserStatus />
+            <div className="flex-[3] p-2 rounded-lg ml-4">
+              {/* Add Drink Button */}
+              <AddDrinkButton />
+            </div>
           </div>
-
-          <div className="flex-[3] p-2 rounded-lg ml-4">
-            <AddDrinkButton />
-          </div>
-        </div>
-      </DrinkProvider>
+        </DrinkProvider>
       </UserProvider>
     </div>
   );
