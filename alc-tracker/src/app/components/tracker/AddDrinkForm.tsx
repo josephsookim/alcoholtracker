@@ -63,9 +63,9 @@ const AddDrinkForm: React.FC<AddDrinkFormProps> = ({ onClose }) => {
             <option value="">Select Type</option>
             <option value="Beer">Beer</option>
             <option value="Wine">Wine</option>
-            <option value="Spirits">Spirits</option>
-            <option value="Cocktail">Cocktail</option>
-            <option value="Other">Other</option>
+            <option value="Champagne">Champagne</option>
+            <option value="Soju">Soju</option>
+            <option value="Hard Liquor">Hard Liquor</option>
           </select>
         </div>
         <div className="mb-4">
