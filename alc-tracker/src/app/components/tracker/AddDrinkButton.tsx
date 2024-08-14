@@ -30,12 +30,19 @@ const AddDrinkButton = () => {
   return (
     <>
       {/* Button to open the modal */}
-      <button
-        onClick={() => setIsModalOpen(true)}
-        className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-      >
-        Add Drink
-      </button>
+      <div className="flex justify-end">
+        <button
+          onClick={() => setIsModalOpen(true)}
+          className="bg-transparent focus:outline-none"
+        >
+          <img
+            src="/add-button.svg"
+            alt="Add Drink"
+            className="p-4"
+            style={{ minWidth: '5vh', minHeight: '5vh' }}
+          />
+        </button>
+      </div>
 
       {/* Modal opens only when isModalOpen is true */}
       {isModalOpen && (
