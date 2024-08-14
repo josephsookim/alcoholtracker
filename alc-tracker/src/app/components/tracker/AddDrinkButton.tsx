@@ -48,7 +48,7 @@ const AddDrinkButton = () => {
       {isModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div
-            className="p-6 rounded-lg shadow-md text-white w-full max-w-md relative border-2 border-white"
+            className="p-6 rounded-lg shadow-md text-white w-full max-w-md relative"
             style={{ backgroundColor: '#081630' }}
           >
             <button
