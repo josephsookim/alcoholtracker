@@ -48,7 +48,7 @@ const AddDrinkButton = () => {
       {isModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div
-            className="p-6 rounded-lg shadow-md text-white w-full max-w-md relative"
+            className="p-6 rounded-lg shadow-md text-white w-full max-w-md relative border-2 border-white"
             style={{ backgroundColor: '#081630' }}
           >
             <button
@@ -84,7 +84,7 @@ const AddDrinkButton = () => {
               </select>
             </div>
             <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-400 mb-1">Standard Servings (oz)</label>
+              <label className="block text-sm font-medium text-gray-400 mb-1">Standard Servings</label>
               <input
                 className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
                 type="number"
@@ -95,7 +95,8 @@ const AddDrinkButton = () => {
             </div>
             <button
               onClick={handleSubmit}
-              className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 border-2 border-white"
+              style={{ backgroundColor: '#081630' }}
             >
               Add Drink
             </button>
