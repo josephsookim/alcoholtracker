@@ -23,9 +23,14 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   // Function to calculate BAC and sober time
   const calculateBACAndSoberTime = (servingAmount: number, alcoholType: string, currentBAC: number, currentTime: number): UserStatus => {
     // Simplified BAC calculation (replace with actual calculation)
-    const bacIncrease = servingAmount * 0.02; // Example: each ounce increases BAC by 0.02
+    const bacIncrease = servingAmount * 0.025; // BAC increase based on the drink
     const newBAC = currentBAC + bacIncrease;
-    const soberTime = currentTime + (newBAC * 2 * 3600000); // Example: it takes 2 hours per BAC point to sober up
+
+    // Calculate the time needed to metabolize the added BAC to get back to zero
+    const hoursToSober = newBAC / 0.015; // It takes 0.015% BAC reduction per hour
+
+    // Convert hours to milliseconds
+    const soberTime = currentTime + (hoursToSober * 3600000); // 1 hour = 3600000 milliseconds
 
     return { currentBAC: newBAC, soberTimestamp: soberTime };
   };
@@ -43,7 +48,12 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
       if (currentTime >= userStatus.soberTimestamp) {
         setUserStatus({ currentBAC: 0, soberTimestamp: 0 });
       }
-    }, 60000); // Check every minute
+
+      else {
+        const newBAC = userStatus.currentBAC - (0.015 / 60);
+        setUserStatus({ currentBAC: newBAC, soberTimestamp: userStatus.soberTimestamp});
+      }
+    }, 60000); // Check every second
 
     return () => clearInterval(interval); // Clean up the interval on component unmount
   }, [userStatus]);
