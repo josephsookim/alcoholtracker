@@ -12,6 +12,7 @@ export interface Drink {
 interface DrinkContextType {
   drinks: Drink[];
   addDrink: (drink: Drink) => void;
+  setDrinks: React.Dispatch<React.SetStateAction<Drink[]>>; // Add setDrinks to the context type
 }
 
 // Create the context
@@ -26,7 +27,7 @@ export const DrinkProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <DrinkContext.Provider value={{ drinks, addDrink }}>
+    <DrinkContext.Provider value={{ drinks, addDrink, setDrinks }}>
       {children}
     </DrinkContext.Provider>
   );
