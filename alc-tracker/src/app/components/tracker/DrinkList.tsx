@@ -3,37 +3,48 @@ import { useDrinks } from '@/app/components/tracker/context/DrinkContext';
 import { useUserStatus } from '@/app/components/tracker/context/UserContext';
 
 const DrinkList = () => {
-  const { drinks, setDrinks } = useDrinks(); // Include setDrinks to update the list
-  const { updateUserStatusAfterRemoval } = useUserStatus(); // Use updateUserStatusAfterRemoval to update BAC and sober time
+  const { drinks, setDrinks } = useDrinks();
+  const { updateUserStatusAfterRemoval } = useUserStatus();
 
   const handleRemoveDrink = (index: number) => {
     const removedDrink = drinks[index];
-
-    // Remove the drink from the list
     const newDrinks = drinks.filter((_, i) => i !== index);
     setDrinks(newDrinks);
-
-    // Update the BAC and sober time
     updateUserStatusAfterRemoval(newDrinks);
   };
 
   return (
-    <div className="max-h-96 overflow-y-auto p-4">
+    <div className="max-h-96 overflow-auto p-4">
       {drinks.map((drink, index) => (
         <div
           key={index}
-          className="flex justify-between items-center border border-gray-700 rounded-lg mb-4 p-4 bg-[#081630]"
+          className="flex flex-col sm:flex-row justify-between items-start sm:items-center border border-gray-700 rounded-lg mb-4 p-4 bg-[#081630] space-y-2 sm:space-y-0 sm:space-x-4"
         >
-          <div className="flex items-center">
+          <div className="flex flex-col sm:flex-row w-full sm:w-auto">
             {/* Drink Icon */}
             <img
-              src={drink.alcoholType === 'Beer' ? '/beer-icon.svg' : '/liquor-icon.svg'}
+              src={(() => {
+                switch (drink.alcoholType) {
+                  case 'Beer':
+                    return '/drinks/beer-icon.svg';
+                  case 'Wine':
+                    return '/drinks/wine-icon.svg';
+                  case 'Champagne':
+                    return '/drinks/champagne-icon.svg';
+                  case 'Soju':
+                    return '/drinks/soju-icon.svg';
+                  case 'Hard Liquor':
+                    return '/drinks/hard-liquor-icon.svg';
+                  default:
+                    return '/drinks/hard-liquor-icon.svg';
+                }
+              })()}
               alt={drink.alcoholType}
-              className="w-12 h-12 mr-4"
+              className="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0"
             />
-            <div className="text-white">
+            <div className="text-white flex-1 mt-2 sm:mt-0 sm:ml-4 w-full sm:w-auto">
               <div className="font-semibold">{drink.alcoholName}</div>
-              <div className="text-gray-400 text-sm">
+              <div className="text-gray-400 text-xs sm:text-sm mt-1 sm:mt-0 whitespace-normal">
                 ABV: {(() => {
                   switch (drink.alcoholType) {
                     case 'Beer':
@@ -51,7 +62,7 @@ const DrinkList = () => {
                   }
                 })()}
               </div>
-              <div className="text-gray-400 text-sm">
+              <div className="text-gray-400 text-xs sm:text-sm mt-1 sm:mt-0 whitespace-normal">
                 Serving: {drink.servingAmount} {(() => {
                   switch (drink.alcoholType) {
                     case 'Beer':
@@ -71,12 +82,12 @@ const DrinkList = () => {
               </div>
             </div>
           </div>
-          <div className="text-white">
+          <div className="text-white text-xs sm:text-sm w-full sm:w-auto mt-2 sm:mt-0">
             <div>{new Date(drink.timestamp).toLocaleDateString()}</div>
             <div>{new Date(drink.timestamp).toLocaleTimeString()}</div>
           </div>
           <button
-            className="text-white hover:text-red-500 focus:outline-none"
+            className="text-white hover:text-red-500 focus:outline-none mt-2 sm:mt-0 flex-shrink-0"
             onClick={() => handleRemoveDrink(index)}
           >
             &times;
