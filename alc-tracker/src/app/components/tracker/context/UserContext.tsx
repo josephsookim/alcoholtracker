@@ -44,10 +44,17 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
 
   const updateUserStatusAfterRemoval = (drinks: Drink[]) => {
     const currentTime = new Date().getTime();
-    const totalBAC = drinks.reduce((acc, drink) => acc + drink.servingAmount * 0.025, 0);
+  
+    // Calculate the total BAC considering the time elapsed for each drink
+    const totalBAC = drinks.reduce((acc, drink) => {
+      const timeElapsed = (currentTime - drink.timestamp) / 3600000; // Time elapsed in hours
+      const drinkBAC = Math.max(drink.servingAmount * 0.025 - timeElapsed * 0.015, 0); // BAC contribution after considering metabolism
+      return acc + drinkBAC;
+    }, 0);
+  
     const hoursToSober = totalBAC / 0.015;
     const soberTimestamp = totalBAC > 0 ? currentTime + hoursToSober * 3600000 : null;
-
+  
     setUserStatus({ currentBAC: totalBAC, soberTimestamp });
   };
 
