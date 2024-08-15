@@ -40,11 +40,11 @@ const DrinkList = () => {
                 }
               })()}
               alt={drink.alcoholType}
-              className="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0"
+              className="w-10 h-10 sm:w-12 sm:h-12"
             />
-            <div className="text-white flex-1 mt-2 sm:mt-0 sm:ml-4 w-full sm:w-auto">
+            <div className="text-white flex-1 mt-2 sm:mt-0 sm:ml-4">
               <div className="font-semibold">{drink.alcoholName}</div>
-              <div className="text-gray-400 text-xs sm:text-sm mt-1 sm:mt-0 whitespace-normal">
+              <div className="text-gray-400 text-xs sm:text-sm mt-1">
                 ABV: {(() => {
                   switch (drink.alcoholType) {
                     case 'Beer':
@@ -62,7 +62,7 @@ const DrinkList = () => {
                   }
                 })()}
               </div>
-              <div className="text-gray-400 text-xs sm:text-sm mt-1 sm:mt-0 whitespace-normal">
+              <div className="text-gray-400 text-xs sm:text-sm mt-1">
                 Serving: {drink.servingAmount} {(() => {
                   switch (drink.alcoholType) {
                     case 'Beer':
@@ -82,12 +82,12 @@ const DrinkList = () => {
               </div>
             </div>
           </div>
-          <div className="text-white text-xs sm:text-sm w-full sm:w-auto mt-2 sm:mt-0">
+          <div className="text-white text-xs sm:text-sm mt-2 sm:mt-0">
             <div>{new Date(drink.timestamp).toLocaleDateString()}</div>
             <div>{new Date(drink.timestamp).toLocaleTimeString()}</div>
           </div>
           <button
-            className="text-white hover:text-red-500 focus:outline-none mt-2 sm:mt-0 flex-shrink-0"
+            className="text-white hover:text-red-500 focus:outline-none mt-2 sm:mt-0"
             onClick={() => handleRemoveDrink(index)}
           >
             &times;
