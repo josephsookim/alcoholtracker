@@ -20,13 +20,10 @@ export default function DrinkTracker() {
     >
       <UserProvider>
         <DrinkProvider>
-          {/* Flex container with 70% and 30% split */}
+          {/* Flex container with DrinkList taking 100% of the width */}
           <div className="flex">
-            <div className="flex-[7] border-2 border-white p-6 rounded-lg min-h-[50vh] max-h-[50vh] overflow-y-auto">
+            <div className="flex-1 border-2 border-white p-6 rounded-lg min-h-[50vh] max-h-[50vh] overflow-y-auto">
               <DrinkList />
-            </div>
-
-            <div className="flex-[3] border-2 border-white p-6 rounded-lg ml-4 min-h-[50vh]">
             </div>
           </div>
 
