@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import AddDrinkForm from '@/app/components/tracker/AddDrinkForm'; // Import the AddDrinkForm component
+import AddDrinkForm from '@/app/components/tracker/AddDrinkForm';
 
 const AddDrinkButton = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
